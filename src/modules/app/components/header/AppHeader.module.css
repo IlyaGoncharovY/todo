@@ -1,0 +1,8 @@
+.appHeaderContainer {
+    h1 {
+        font-size: 56px;
+        font-weight: 100;
+        color: #EBE0DE;
+        margin: 10px;
+    }
+}
