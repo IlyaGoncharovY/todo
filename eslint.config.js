@@ -1,28 +1,54 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
+import reactHooks from 'eslint-plugin-react-hooks';
+import typescriptEslint from '@typescript-eslint/eslint-plugin';
+import importPlugin from 'eslint-plugin-import';
+import parser from '@typescript-eslint/parser';
 
-export default tseslint.config(
-  { ignores: ['dist'] },
+const compat = new FlatCompat();
+
+export default [
+  js.configs.recommended,
+  ...compat.extends('plugin:react-hooks/recommended'),
+  ...compat.extends('plugin:@typescript-eslint/recommended'),
+
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      parser: parser,
+      ecmaVersion: 2021,
+      sourceType: 'module',
     },
     plugins: {
+      '@typescript-eslint': typescriptEslint,
+      import: importPlugin,
       'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
+      'react-hooks/exhaustive-deps': 'warn',
+      'react-hooks/rules-of-hooks': 'error',
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'no-console': 'warn',
+      'prefer-const': 'warn',
+      quotes: ['warn', 'single'],
+      indent: ['warn', 2],
+      'max-len': ['warn', { code: 120 }],
+      'comma-dangle': ['warn', 'always-multiline'],
+      semi: ['warn', 'always'],
+      'import/order': [
         'warn',
-        { allowConstantExport: true },
+        {
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
+          'newlines-between': 'always-and-inside-groups',
+        },
       ],
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
   },
-)
+];
