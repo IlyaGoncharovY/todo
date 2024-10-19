@@ -1,0 +1,21 @@
+.todolistContainer {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    input {
+        border: 1px solid #ccc;
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 16px;
+        line-height: 1.5;
+        height: 40px;
+        box-sizing: border-box;
+
+        input::placeholder {
+            color: #cccccc;
+            font-size: 16px;
+        }
+    }
+}
