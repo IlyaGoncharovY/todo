@@ -1,14 +1,10 @@
 import {FC, memo, useCallback} from 'react';
 
 import {TaskType} from '../../../../../common/type';
-
-import arrow from '../../../../../assets/checkMark.png';
-
 import {useAppDispatch} from '../../../../../store';
-
+import arrow from '../../../../../assets/checkMark.png';
+import {CommonCheckBox} from '../../../../../common/components';
 import {changeStatusTask} from '../../../reducer/tasksReducer.ts';
-
-import {CommonCheckBox} from '../../../../../common/components/checkBox/CommonCheckBox.tsx';
 
 import s from './TaskItem.module.css';
 
