@@ -1,8 +1,10 @@
 import {Action, configureStore, ThunkAction} from '@reduxjs/toolkit';
 
+import tasksReducer from '../modules/tasks/reducer/tasksReducer.ts';
+
 export const store = configureStore({
   reducer: {
-   
+    tasksArr: tasksReducer,
   },
 });
 

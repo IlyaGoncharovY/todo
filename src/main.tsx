@@ -6,7 +6,7 @@ import {App} from './modules/app/components';
 
 import './index.css';
 
-import {store} from './store/store.ts';
+import {store} from './store';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
