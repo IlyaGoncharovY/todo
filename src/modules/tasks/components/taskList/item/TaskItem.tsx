@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {FC, memo} from 'react';
 
 import {TaskType} from '../../../../../common/type';
 
@@ -14,7 +14,7 @@ interface ITaskItem {
     task:TaskType
 }
 
-export const TaskItem:FC<ITaskItem> = ({
+export const TaskItem:FC<ITaskItem> = memo(({
   task,
 }) => {
 
@@ -38,4 +38,4 @@ export const TaskItem:FC<ITaskItem> = ({
       </p>
     </div>
   );
-};
+});
