@@ -1,0 +1,23 @@
+.fakeCheckBoxContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid #bcbcbc;
+    margin: 5px;
+    cursor: pointer;
+
+    img {
+        width: 40px;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transform: scale(0.9);
+    }
+
+    .activeImg {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

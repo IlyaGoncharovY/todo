@@ -1,18 +1,17 @@
-import { v1 } from 'uuid';
-
 import {ChangeEvent, useState} from 'react';
 
-import {Tasks} from '../../tasks/components/taskList/Tasks.tsx';
+import {v1} from 'uuid';
 
 import {useAppDispatch} from '../../../store';
-
 import {addTask} from '../../tasks/reducer/tasksReducer.ts';
+import {Tasks} from '../../tasks/components/taskList/Tasks.tsx';
 
 import s from './Todolist.module.css';
 
 export const Todolist = () => {
 
   const [taskTitle, setTaskTitle] = useState<string>('');
+  const [isTasksVisible, setIsTasksVisible] = useState<boolean>(true);
 
   const dispatch = useAppDispatch();
 
@@ -32,16 +31,29 @@ export const Todolist = () => {
     }
   };
 
+  const toggleTasksVisibility = () => {
+    setIsTasksVisible(prev => !prev);
+  };
+
   return (
     <div className={s.todolistContainer}>
-      <input
-        type="text"
-        placeholder="What needs to be done?"
-        value={taskTitle}
-        onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
-      />
-      <Tasks/>
+      <div className={s.inputContainer}>
+        <input
+          type="text"
+          placeholder="What needs to be done?"
+          value={taskTitle}
+          onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
+        />
+        <span className={s.arrow} onClick={toggleTasksVisibility}>
+          {isTasksVisible ? '▲' : '▼'}
+        </span>
+      </div>
+      {isTasksVisible && (
+        <div className={s.tasksContainer}>
+          <Tasks />
+        </div>
+      )}
     </div>
   );
 };

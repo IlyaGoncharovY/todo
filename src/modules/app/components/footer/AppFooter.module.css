@@ -3,4 +3,25 @@
     align-items: center;
     justify-content: space-between;
     width: 60%;
+    gap: 10px;
+
+    @media screen and (max-width: 760px) {
+        flex-direction: column;
+    }
+
+    .countContainer {
+        p {
+            color: #888888;
+            font-size: 14px;
+            font-weight: revert;
+            white-space: nowrap;
+        }
+    }
+
+    .buttonGroupContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
 }

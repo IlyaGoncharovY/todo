@@ -5,18 +5,43 @@
     justify-content: center;
     flex-direction: column;
 
-    input {
-        border: 1px solid #ccc;
+    .inputContainer {
+        position: relative;
         width: 100%;
-        padding: 10px 15px;
-        font-size: 16px;
-        line-height: 1.5;
-        height: 40px;
-        box-sizing: border-box;
 
-        input::placeholder {
-            color: #cccccc;
+        input {
+            border: 1px solid #ccc;
+            width: 100%;
+            padding: 10px 15px;
             font-size: 16px;
+            line-height: 1.5;
+            height: 40px;
+            box-sizing: border-box;
+
+            input::placeholder {
+                color: #cccccc;
+                font-size: 16px;
+            }
         }
+
+        .arrow {
+            position: absolute;
+            left: 1px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            color: #666;
+        }
+    }
+    .tasksContainer {
+        width: 100%;
+        margin-top: 10px;
+        max-height: 70vh;
+        overflow-y: auto;
+        overflow-x: clip;
+        transition: max-height 0.3s ease-in-out;
+        box-shadow: 0 0 0 3px rgba(218, 214, 214, 0.4);
+        border-radius: 4px;
     }
 }

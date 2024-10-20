@@ -1,0 +1,38 @@
+.commonButtonContainer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    user-select: none;
+    transition: background-color 0.2s ease-in-out;
+    color: #888888;
+    font-size: 14px;
+    margin: 0 5px;
+    height: 20px;
+
+    p {
+        white-space: nowrap;
+    }
+}
+
+.commonButtonContainer:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(187, 222, 241, 0.4);
+}
+
+.commonButtonContainer:hover {
+    background-color: #f0f0f0;
+}
+
+.commonButtonContainer:active {
+    background-color: #e0e0e0;
+}
+
+.commonButtonContainer.active {
+    background-color: #b4beca;
+    color: #fff;
+    border-color: #b4beca;
+}
