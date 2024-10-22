@@ -4,7 +4,12 @@
     width: 100%;
     border: 1px solid #E8E8E8;
 
-    p {
+    .checkedTask {
+        text-decoration: line-through;
+        color: #939393;
+    }
+
+    .textTask {
         color: #494949;
         font-size: 20px;
         margin-left: 10px;
@@ -13,6 +18,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 42ch;
+        line-height: normal;
 
         @media screen and (max-width: 860px) {
             max-width: 12ch;
