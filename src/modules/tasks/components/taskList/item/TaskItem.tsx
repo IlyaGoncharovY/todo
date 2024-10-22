@@ -29,7 +29,7 @@ export const TaskItem:FC<ITaskItem> = memo(({
         changeCheckedValue={changeStatusTaskHandler}
         checkedStatus={task.isActive}
       />
-      <p>
+      <p title={task.title}>
         {task.title}
       </p>
     </div>
