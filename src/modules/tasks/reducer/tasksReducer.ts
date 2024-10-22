@@ -1,31 +1,16 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 import {FilterType, TaskType} from '../../../common/type';
+import {loadTasksFromLocalStorage, saveTasksToLocalStorage} from '../helpers';
 
 interface initialStateType {
     tasksArr: TaskType[],
     filteredTasks: TaskType[],
 }
 
-const isLocalStorageAvailable = typeof localStorage !== 'undefined';
-
-const loadTasksFromLocalStorage = (): TaskType[] => {
-  if (isLocalStorageAvailable) {
-    const tasks = localStorage.getItem('tasks');
-    return tasks ? JSON.parse(tasks) : [];
-  }
-  return [];
-};
-
 const initialState: initialStateType = {
   tasksArr: loadTasksFromLocalStorage(),
   filteredTasks: loadTasksFromLocalStorage(),
-};
-
-const saveTasksToLocalStorage = (tasksArr: TaskType[]) => {
-  if (isLocalStorageAvailable) {
-    localStorage.setItem('tasks', JSON.stringify(tasksArr));
-  }
 };
 
 const tasksSlice = createSlice({
