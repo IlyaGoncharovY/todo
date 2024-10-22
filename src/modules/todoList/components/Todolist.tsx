@@ -60,7 +60,7 @@ export const Todolist = () => {
           maxLength={MAX_LENGTH+1}
         />
         <span className={s.arrow} onClick={toggleTasksVisibility}>
-          {isTasksVisible ? '▲' : '▼'}
+          {isTasksVisible ? '▼' : '▲'}
         </span>
       </div>
       {maxLengthReached && (
