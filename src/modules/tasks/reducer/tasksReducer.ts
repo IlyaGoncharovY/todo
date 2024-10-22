@@ -1,6 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 import {FilterType, TaskType} from '../../../common/type';
+import {loadTasksFromLocalStorage, saveTasksToLocalStorage} from '../helpers';
 
 interface initialStateType {
     tasksArr: TaskType[],
@@ -8,8 +9,8 @@ interface initialStateType {
 }
 
 const initialState: initialStateType = {
-  tasksArr: [],
-  filteredTasks: [],
+  tasksArr: loadTasksFromLocalStorage(),
+  filteredTasks: loadTasksFromLocalStorage(),
 };
 
 const tasksSlice = createSlice({
@@ -19,6 +20,8 @@ const tasksSlice = createSlice({
     addTask: (state, action:PayloadAction<TaskType>) => {
       state.tasksArr.push(action.payload);
       state.filteredTasks = state.tasksArr;
+
+      saveTasksToLocalStorage(state.tasksArr);
     },
     changeStatusTask: (state, action: PayloadAction<string>) => {
       const task = state.tasksArr.find(task => task.id === action.payload);
@@ -26,6 +29,8 @@ const tasksSlice = createSlice({
         task.isActive = !task.isActive;
       }
       state.filteredTasks = state.tasksArr;
+
+      saveTasksToLocalStorage(state.tasksArr);
     },
     getFilteredTasks: (state, action: PayloadAction<FilterType>) => {
       switch (action.payload) {
@@ -46,6 +51,8 @@ const tasksSlice = createSlice({
     clearCompletedTasks: (state) => {
       state.tasksArr = state.tasksArr.filter(task => !task.isActive);
       state.filteredTasks = state.tasksArr;
+
+      saveTasksToLocalStorage(state.tasksArr);
     },
   },
 });

@@ -1,8 +1,22 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 
-import {TaskType} from '../../../common/type';
+import { TaskType } from '../../../common/type';
 
-import tasksReducer, {addTask, changeStatusTask, clearCompletedTasks, getFilteredTasks} from './tasksReducer.ts';
+import tasksReducer, { addTask, changeStatusTask, clearCompletedTasks, getFilteredTasks } from './tasksReducer.ts';
+
+/**
+ * Мокаю localStorage перед тестами
+ */
+beforeEach(() => {
+  globalThis.localStorage = {
+    getItem: vi.fn(() => null),
+    setItem: vi.fn(() => null),
+    removeItem: vi.fn(() => null),
+    clear: vi.fn(),
+    key: vi.fn(),
+    length: 0,
+  };
+});
 
 /**
  * Моковые данные для тестов, эмулирующие таску.
