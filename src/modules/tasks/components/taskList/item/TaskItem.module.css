@@ -6,7 +6,8 @@
 
     .checkedTask {
         text-decoration: line-through;
-        color: #939393;
+        text-decoration-thickness: 2px;
+        color: #939393 !important;
     }
 
     .textTask {
